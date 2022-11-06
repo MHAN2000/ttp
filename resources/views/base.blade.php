@@ -13,6 +13,7 @@
     @include('modal.modal')
     {{-- LIBRARIES --}}
     <!-- CSS -->
+    <link rel='stylesheet' href='{{ asset('css/style.css') }}'>
     <link rel='stylesheet' href='{{ asset('lib/bootstrap/bootstrap.min.css') }}'>
     <link rel='stylesheet' href='{{ asset('lib/dataTables/dataTables.bootstrap5.min.css') }}'>
     <link rel='stylesheet' href='{{ asset('lib/dataTables/responsive.dataTables.min.css') }}'>
@@ -40,7 +41,7 @@
 
 </head>
 
-<body>
+<body class="vh-100">
     @yield('body')
 </body>
 
