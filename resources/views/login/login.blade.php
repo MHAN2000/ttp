@@ -1,14 +1,15 @@
 @extends('base')
 @section('title', 'Inicia sesión')
 @section('body')
-    <form id="inicio_sesion_form" class="row h-100 d-flex justify-content-center align-items-center flex-column"
-        onsubmit="login(this)">
+    <form id="inicio_sesion_form" class="row h-100 d-flex justify-content-center align-items-center flex-column">
         <div class="col-12 d-flex align-items-center flex-column">
             <label for="">Usuario</label>
             <input type="text" class="w-25 form-control" name="email">
             <label for="">Contraseña</label>
             <input type="password" class="w-25 form-control" name="password">
-            <button type="button" onclick="login(this)" class="btn-success">Ingresar</button>
+            <img class="m-3" src="{{ captcha_src() }}">
+            <input type="text" class="w-25 form-control" name="captcha">
+            <button type="button" name="check" onclick="login(this)" class="btn-success">Ingresar</button>
         </div>
     </form>
 @endsection
@@ -36,9 +37,22 @@
             if (req.ok) {
                 window.location.href = route('inicio');
                 return;
+            } else if (req.status == 429) {
+                // Obtener respuesta del servidor
+                const res = await req.json();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ERROR',
+                    text: res
+                });
+                return;
             }
 
-            Swal.fire('Error');
+            Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: 'Credenciales incorrectas'
+            });
         }
     </script>
 @endpush
