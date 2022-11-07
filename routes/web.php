@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatalogosController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,10 @@ Route::get('/', function () {
 Route::get('/inicia_sesion', function() {
     return view('login.login');
 });
+
+Route::get('/catalogo', function() {
+    return view('catalogo.index');
+});
+
 
 Route::post('/usuario_sesion',  [UserController::class, 'login'])->name('usuario_sesion');
