@@ -31,6 +31,8 @@
     <script src='{{ asset('lib/bootstrap/bootstrap.bundle.min.js') }}' defer></script>
     <!-- SWEETALERT 2 -->
     <script src='{{ asset('lib/sweetalert/sweetalert2.all.min.js') }}' defer></script>
+    {{-- CHART JS --}}
+    <script src="{{ asset('lib/chartjs/chart.js') }}" defer></script>
     <!-- Datatables -->
     <script src='{{ asset('lib/dataTables/datatables.min.js') }}' defer></script>
     <!-- Datatables Bootstrap 5-->

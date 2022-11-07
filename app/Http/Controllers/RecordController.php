@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Record;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
 
 class RecordController extends Controller
@@ -94,7 +96,10 @@ class RecordController extends Controller
     public function exportPDF($id) {
         // Crear instancia de domPDF
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('pdf.pdf');
+        $hoy = Carbon::now()->format('d-m-Y H:i:s');
+        // Crear el qr
+        $qrCode = QrCode::size(150)->generate("https://www.simplesoftware.io/#/docs/simple-qrcode");
+        $pdf->loadView('pdf.pdf', compact('hoy', 'qrCode'));
         return $pdf->stream();
     }
 }
