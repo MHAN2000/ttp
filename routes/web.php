@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CatalogosController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\RecordController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +33,10 @@ Route::get('/catalogo', function() {
 Route::post('/usuario_sesion',  [UserController::class, 'login'])->name('usuario_sesion');
 
 Route::resource('levels', LevelController::class);
+
+Route::resource('records', RecordController::class);
+
+// Ruta directo de PDF para pruebas jsjs
+Route::get('record_pdf/{id}', [RecordController::class, 'exportPDF']);
 
 Route::get('tabla_levels', [LevelController::class, 'getLevels'])->name('getLevels');
