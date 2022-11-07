@@ -34,10 +34,10 @@
                     <a href="#"><i class="fas fa-file-signature"></i> Registro</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-globe-americas"></i> Municipios</a>
+                    <a href="#"><i class="fas fa-search-location"></i> Municipios</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-level-up-alt"></i> Nivles</a>
+                    <a href="#"><i class="fas fa-level-up-alt"></i> Niveles</a>
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-envelope-open-text"></i> Asuntos</a>
@@ -81,6 +81,7 @@
             </nav>
 
             <div class="content-p">
+                @yield('content-sidebar')
                 {{-- <h2>Collapsible Sidebar Using Bootstrap 4</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -106,7 +107,7 @@
 
         </div>
     </div>
-
+@endsection
     @push('scripts')
         <script type="text/javascript">
             $(document).ready(function() {
