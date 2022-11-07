@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{ $subject->name ?? 'Mostrar asunto' }}
+    {{ $municipio->name ?? 'Mosrar Municipio' }}
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div class="d-flex justify-content-between align-items-center">
     
                             <span id="card_title">
-                                {{ __('Mostrar asunto') }}
+                                {{ __('Mostrar municipio') }}
                             </span>
     
                             <div class="float-right">
-                                <a class="btn btn-blue btn-sm" href="{{ route('subjects.index') }}"> Regresar</a>
+                                <a class="btn btn-blue btn-sm" href="{{ route('municipios.index') }}"> Regresar</a>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                         
                         <div class="form-group">
                             <strong>Nombre:</strong>
-                            {{ $subject->nombre }}
+                            {{ $municipio->nombre }}
                         </div>
 
                     </div>

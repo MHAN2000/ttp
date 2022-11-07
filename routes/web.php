@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CatalogosController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -39,3 +40,7 @@ Route::get('tabla_levels', [LevelController::class, 'getLevels'])->name('getLeve
 Route::resource('subjects', SubjectController::class);
 
 Route::get('tabla_subjects', [SubjectController::class, 'getSubjects'])->name('getSubjects');
+
+Route::resource('municipios', MunicipioController::class);
+
+Route::get('tabla_municipios', [MunicipioController::class, 'getMunicipios'])->name('getMunicipios');
