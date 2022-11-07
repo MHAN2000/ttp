@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('home.home');
 })->name('inicio');
 
-Route::get('/inicia_sesion', function() {
+Route::get('/inicia_sesion', function () {
     return view('login.login');
 });
 

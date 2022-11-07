@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserLoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Mews\Captcha\Facades\Captcha;
 
 class UserController extends Controller
 {
@@ -83,13 +86,20 @@ class UserController extends Controller
         //
     }
 
-    public function login(Request $request) {
-        $credentials = $request->except('_token');
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return response()->json('/');
+    public function login(Request $request)
+    {
+        $rules = ['captcha' => 'required|captcha'];
+        $validator = validator()->make(request()->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json('CAPTCHA incorrecto', 429);
+        } else {
+            // Hacer validacion de las credenciales de inicio de sesion
+            if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+                $request->session()->regenerate();
+                return response()->json('/');
+            }
         }
-
+        // Si todo falla, es porque seguramente el usuario introdujo las credenciales incorrectamente
         return response()->json('Credenciales incorrectas', 500);
     }
 }
