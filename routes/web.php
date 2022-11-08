@@ -4,10 +4,6 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SubjectController;
-<<<<<<< HEAD
-=======
-use App\Http\Controllers\RecordController;
->>>>>>> paty
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
