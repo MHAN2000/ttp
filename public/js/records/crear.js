@@ -1,8 +1,8 @@
-const generar_turno = async () =>{
+const generar_turno = async () => {
     const url = route("crear_registro_publico");
     const form = document.getElementById("formulario");
     const formData = new FormData(form);
-    const init ={
+    const init = {
         method: "POST",
         body: formData,
         headers: {
@@ -10,14 +10,17 @@ const generar_turno = async () =>{
             "X-CSRF-TOKEN": $("#csrf").attr("content"),
         }
     }
-    const req = await fetch (url,init);
+    const req = await fetch(url, init);
     if (req.ok) {
+        const { id } = await req.json();
+        window.open(route('export_pdf', id), '_blank').focus();
         Swal.fire({
             title: "Good job!",
             text: "Registro creado.",
             icon: "success"
         });
         dt_records.ajax.reload();
+        // Generar pdf
     } else {
         Swal.fire({
             title: "Error!",

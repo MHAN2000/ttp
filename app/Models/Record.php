@@ -52,32 +52,17 @@ class Record extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre_realiza','curp','nombre','paterno','materno','telefono','celular','correo','id_nivel','id_municipio','id_asunto'];
+    protected $fillable = ['nombre_realiza','curp','nombre','paterno','materno','telefono','celular','correo','id_nivel','id_municipio','id_asunto'];    
 
+    public function municipio() {
+        return $this->belongsTo(Municipio::class, 'id_municipio', 'id');
+    }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function level()
-    {
-        return $this->hasOne('App\Models\Level', 'id', 'id_nivel');
+    public function nivel() {
+        return $this->belongsTo(Level::class, 'id_nivel', 'id');
     }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function municipio()
-    {
-        return $this->hasOne('App\Models\Municipio', 'id', 'id_municipio');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function subject()
-    {
-        return $this->hasOne('App\Models\Subject', 'id', 'id_asunto');
-    }
-    
 
+    public function asunto() {
+        return $this->belongsTo(Subject::class, 'id_asunto', 'id');
+    }
 }

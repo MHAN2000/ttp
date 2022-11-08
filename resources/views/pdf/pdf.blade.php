@@ -35,12 +35,15 @@
                         <span
                             style="text-transform: uppercase; font-size: 1.5rem; color: #8dacb6">{{ $hoy }}</span>
                     </p>
-                    <p style="margin: 0 1rem; line-height: 1rem;">Primero Segundo Apellido Apellido | CURP</p>
-                    <p style="margin: 0 1rem; line-height: 1rem;">8662381328</p>
-                    <p style="margin: 0 1rem; line-height: 1rem;">8662381328</p>
-                    <p style="margin: 0 1rem; line-height: 1rem;">mariohu.almaguerna@gmail.com</p>
-                    <p style="margin: 0 1rem; line-height: 1rem;">Primaria</p>
-                    <p style="margin: 0 1rem 3rem; line-height: 1rem;">Asunto a tratar</p>
+                    <p style="margin: 0 1rem; text-transform: uppercase; font-size: 1.5rem; color: #8dacb6">#MO1</p>
+                    <p style="margin: 0 1rem; line-height: 1rem;">{{ $record->nombre_realiza }} | {{ $record->curp }}
+                    </p>
+                    <p style="margin: 0 1rem; line-height: 1rem;">{{ $record->telefono }}</p>
+                    <p style="margin: 0 1rem; line-height: 1rem;">{{ $record->celular }}</p>
+                    <p style="margin: 0 1rem; line-height: 1rem;">{{ $record->correo }}</p>
+                    <p style="margin: 0 1rem; line-height: 1rem;">{{ $record->municipio->nombre }}</p>
+                    <p style="margin: 0 1rem; line-height: 1rem;">{{ $record->nivel->nombre }}</p>
+                    <p style="margin: 0 1rem 3rem; line-height: 1rem;">{{ $record->asunto->nombre }}</p>
                 </td>
                 <td width="30%" style="margin: 0 auto;">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img

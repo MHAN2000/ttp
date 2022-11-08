@@ -52,10 +52,10 @@
                     <div class="col-12">
                         <select  class="form-control" name="id_municipio" id="id_municipio" >
                             <option value="" selected disabled>Municipio</option>
-                            <option value="2">Saltillo</option>
-                            <option value="2">Torreón</option>
-                            <option value="2">Monclova</option>
-                            <option value="2">Parras</option>
+                            <option value="1">Saltillo</option>
+                            <option value="1">Torreón</option>
+                            <option value="1">Monclova</option>
+                            <option value="1">Parras</option>
                         </select>
                     </div>
                 </div>
@@ -64,10 +64,10 @@
                     <div class="col-12">
                         <select  class="form-control" name="id_asunto" id="id_asunto" >
                             <option value="" selected disabled>Asunto</option>
-                            <option value="4">Inscripción</option>
-                            <option value="4">Reinscripción</option>
-                            <option value="4">Baja temporal</option>
-                            <option value="4">Baja definitiva</option>
+                            <option value="1">Inscripción</option>
+                            <option value="1">Reinscripción</option>
+                            <option value="1">Baja temporal</option>
+                            <option value="1">Baja definitiva</option>
                         </select>
                     </div>
                 </div>

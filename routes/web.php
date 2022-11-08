@@ -43,7 +43,7 @@ Route::get('tabla_records', [RecordController::class, 'getRecords'])->name('getR
 
 
 // Ruta directo de PDF para pruebas jsjs
-Route::get('record_pdf/{id}', [RecordController::class, 'exportPDF']);
+Route::get('record_pdf/{id}', [RecordController::class, 'exportPDF'])->name('export_pdf');
 
 Route::get('tabla_levels', [LevelController::class, 'getLevels'])->name('getLevels');
 
