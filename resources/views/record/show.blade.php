@@ -65,16 +65,16 @@
                             {{ $record->turno }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Nivel:</strong>
-                            {{ $record->id_nivel }}
+                            <strong>Nivel:</strong>
+                            {{ $record->nivel->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Municipio:</strong>
-                            {{ $record->id_municipio }}
+                            <strong>Municipio:</strong>
+                            {{ $record->municipio->nombre }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Asunto:</strong>
-                            {{ $record->id_asunto }}
+                            <strong>Asunto:</strong>
+                            {{ $record->asunto->nombre }}
                         </div>
 
                     </div>

@@ -46,9 +46,9 @@
 										<th>Correo</th>
                                         {{-- <th>Estatus</th>
 										<th>Turno</th> --}}
-										<th>Id Nivel</th>
-										<th>Id Municipio</th>
-										<th>Id Asunto</th>
+										<th>Nivel</th>
+										<th>Municipio</th>
+										<th>Asunto</th>
 
                                         <th style="width: 20%"></th>
                                     </tr>

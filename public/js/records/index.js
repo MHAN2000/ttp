@@ -31,13 +31,13 @@ $(document).ready(function () {
                 data: "correo",
             },
             {
-                data: "id_nivel",
+                data: "nivel.nombre",
             },
             {
-                data: "id_municipio",
+                data: "municipio.nombre",
             },
             {
-                data: "id_asunto",
+                data: "asunto.nombre",
             },
             {
                 data: null,

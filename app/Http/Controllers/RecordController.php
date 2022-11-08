@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Level;
 use App\Models\Record;
+use App\Models\Municipio;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Carbon;
@@ -36,7 +39,11 @@ class RecordController extends Controller
     public function create()
     {
         $record = new Record();
-        return view('record.create', compact('record'));
+        $municipios = Municipio::all();
+        $asuntos = Subject::all();
+        $niveles = Level::all();
+        return view('record.create', compact('record', 'municipios', 'niveles', 'asuntos'));
+
     }
 
     /**
@@ -88,8 +95,12 @@ class RecordController extends Controller
     public function edit($id)
     {
         $record = Record::find($id);
+        $municipios = Municipio::all();
+        $asuntos = Subject::all();
+        $niveles = Level::all();
+        return view('record.edit', compact('record', 'municipios', 'niveles', 'asuntos'));
 
-        return view('record.edit', compact('record'));
+        // return view('record.edit', compact('record'));
     }
 
     /**
@@ -134,7 +145,7 @@ class RecordController extends Controller
     }
 
     public function getRecords() {
-        $data = Record::all();
+        $data = Record::with(['municipio', 'nivel', 'asunto']);
         return DataTables::of($data)->make(true);
     }
 }
