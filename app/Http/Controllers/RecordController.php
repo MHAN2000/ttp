@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Record;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\App;
 use Yajra\DataTables\Facades\DataTables;
 
 /**
@@ -60,7 +63,7 @@ class RecordController extends Controller
 
         $record = Record::create($request->all());
 
-        return response()->json("Registro creado.", 200);
+        return response()->json($record, 200);
     }
 
     /**
@@ -116,6 +119,18 @@ class RecordController extends Controller
         $record = Record::find($id)->delete();
 
         return response()->json($record);
+    }
+
+    public function exportPDF($id) {
+        // Encontrar el registro por medio del id
+        $record = Record::find($id);
+        // Crear instancia de domPDF
+        $pdf = App::make('dompdf.wrapper');
+        $hoy = Carbon::now()->format('d-m-Y H:i:s');
+        // Crear el qr
+        $qrCode = QrCode::size(150)->generate("https://www.simplesoftware.io/#/docs/simple-qrcode");
+        $pdf->loadView('pdf.pdf', compact('record', 'hoy', 'qrCode'));
+        return $pdf->stream();
     }
 
     public function getRecords() {
