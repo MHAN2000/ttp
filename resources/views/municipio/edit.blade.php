@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('template_title')
-Actualizar nivel
+@section('title')
+    Actulizar Municipio
 @endsection
 
 @section('content')
@@ -13,14 +13,14 @@ Actualizar nivel
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Actualizar nivel</span>
+                        <span class="card-title">Actulizar Municipio</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('levels.update', $level->id) }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('municipios.update', $municipio->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 
-                            @include('level.form')
+                            @include('municipio.form')
 
                         </form>
                     </div>

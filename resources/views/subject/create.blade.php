@@ -1,26 +1,25 @@
 @extends('layouts.app')
 
-@section('template_title')
-Actualizar nivel
+@section('title')
+    Crear Asunto
 @endsection
 
 @section('content')
     <section class="content container-fluid">
-        <div class="">
+        <div class="row">
             <div class="col-md-12">
 
                 @includeif('partials.errors')
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Actualizar nivel</span>
+                        <span class="card-title">Crear Asunto</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('levels.update', $level->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ route('subjects.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('level.form')
+                            @include('subject.form')
 
                         </form>
                     </div>
