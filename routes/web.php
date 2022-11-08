@@ -7,6 +7,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use App\Models\Level;
 use App\Models\Municipio;
+use App\Models\Record;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,8 @@ Route::resource('levels', LevelController::class);
 Route::resource('records', RecordController::class);
 
 Route::get('tabla_records', [RecordController::class, 'getRecords'])->name('getRecords');
+
+Route::put('status_registro/{id}', [RecordController::class, 'changeStatus'])->name('changeStatus');
 
 
 // Ruta directo de PDF para pruebas jsjs

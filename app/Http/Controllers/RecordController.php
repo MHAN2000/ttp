@@ -171,6 +171,13 @@ class RecordController extends Controller
         return response()->json('Se ha editado con exito');
     }
 
+    public function changeStatus(Request $request, int $id){
+        $record = Record::find($id);
+        $record->estatus=$request->get('status');
+        $record->save();
+        return response()->json('Se ha actualizado con exito');
+    }
+
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse

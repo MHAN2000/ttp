@@ -41,6 +41,16 @@
             {{ Form::email('correo', $record->correo, ['class' => 'form-control' . ($errors->has('correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
             {!! $errors->first('correo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        {{-- <div class="form-group">
+            {{ Form::label('turno') }}
+            {{ Form::number('turno', $record->turno, ['class' => 'form-control' . ($errors->has('turno') ? ' is-invalid' : ''), 'placeholder' => 'Turno']) }}
+            {!! $errors->first('turno', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group">
+            {{ Form::label('correo') }}
+            {{ Form::email('correo', $record->correo, ['class' => 'form-control' . ($errors->has('correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
+            {!! $errors->first('correo', '<div class="invalid-feedback">:message</div>') !!}
+        </div> --}}
         <div class="form-group">
             {{ Form::label('nivel') }}
             <select name="id_nivel" id="id_nivel" class="form-control">
