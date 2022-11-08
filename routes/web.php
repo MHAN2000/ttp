@@ -9,6 +9,7 @@ use App\Models\Level;
 use App\Models\Municipio;
 use App\Models\Record;
 use App\Models\Subject;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,7 @@ Route::get('/', function () {
     $municipios = Municipio::all();
     $asuntos = Subject::all();
     $niveles = Level::all();
-    
+
     return view('record.public-record', compact('municipios', 'asuntos', 'niveles'));
 })->name('inicio');
 
@@ -69,3 +70,8 @@ Route::get('tabla_subjects', [SubjectController::class, 'getSubjects'])->name('g
 Route::resource('municipios', MunicipioController::class);
 
 Route::get('tabla_municipios', [MunicipioController::class, 'getMunicipios'])->name('getMunicipios');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('inicia_sesion');
+})->name('logout');
