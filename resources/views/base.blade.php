@@ -11,7 +11,7 @@
     {{-- CSRF Token meta tag --}}
     <meta id='csrf' name='csrf-token' content='{{ csrf_token() }}'>
     {{-- Include modal --}}
-    {{-- @include('modal.modal') --}}
+    @include('modal.modal')
     {{-- LIBRARIES --}}
     <!-- CSS -->
     <link rel='stylesheet' href='{{ asset('css/style.css') }}'>

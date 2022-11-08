@@ -5,6 +5,9 @@ use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
+use App\Models\Level;
+use App\Models\Municipio;
+use App\Models\Subject;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,15 +22,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('home.home');
-    return view('record.public-record');
+    $municipios = Municipio::all();
+    $asuntos = Subject::all();
+    $niveles = Level::all();
+    
+    return view('record.public-record', compact('municipios', 'asuntos', 'niveles'));
 })->name('inicio');
 
 Route::get('/inicia_sesion', function () {
     return view('login.login');
 });
 
-Route::get('/catalogo', function() {
+Route::get('/catalogo', function () {
     return view('catalogo.index');
 });
 
@@ -44,6 +50,12 @@ Route::get('tabla_records', [RecordController::class, 'getRecords'])->name('getR
 
 // Ruta directo de PDF para pruebas jsjs
 Route::get('record_pdf/{id}', [RecordController::class, 'exportPDF'])->name('export_pdf');
+
+Route::get('encontrar_registro_curp/{curp}', [RecordController::class, 'encontrarCURP'])->name('encontrarCURP');
+
+Route::get('/editar_registro_publico/{curp}', [RecordController::class, 'editPublico'])->name('editPublico');
+
+Route::put('actualizar_registro_publico/{id}', [RecordController::class, 'updatePublic'])->name('updatePublic');
 
 Route::get('tabla_levels', [LevelController::class, 'getLevels'])->name('getLevels');
 

@@ -19,7 +19,7 @@ class CreateRecordsTable extends Migration
             $table->string('nombre_realiza');
             $table->string('curp');
             $table->string('nombre');
-            $table->string('paterno');
+            $table->string('paterno')->default('000');
             $table->string('materno');
             $table->string('telefono');
             $table->string('celular');
