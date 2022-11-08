@@ -44,6 +44,8 @@
 										<th>Telefono</th>
 										<th>Celular</th>
 										<th>Correo</th>
+                                        {{-- <th>Estatus</th>
+										<th>Turno</th> --}}
 										<th>Id Nivel</th>
 										<th>Id Municipio</th>
 										<th>Id Asunto</th>
@@ -84,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $records->links() !!}
+                {{-- {!! $records->links() !!} --}}
             </div>
         </div>
     </div>

@@ -24,6 +24,8 @@ class CreateRecordsTable extends Migration
             $table->string('telefono');
             $table->string('celular');
             $table->string('correo');
+            $table->string('estatus')->default('Pendiente');
+            $table->string('turno')->default('000');
             $table->foreignId('id_nivel')->references('id')->on('levels');
             $table->foreignId('id_municipio')->references('id')->on('municipios');
             $table->foreignId('id_asunto')->references('id')->on('subjects');

@@ -64,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $levels->links() !!}
+                {{-- {!! $levels->links() !!} --}}
             </div>
         </div>
     </div>

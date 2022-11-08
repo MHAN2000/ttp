@@ -64,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $municipios->links() !!}
+                {{-- {!! $municipios->links() !!} --}}
             </div>
         </div>
     </div>
