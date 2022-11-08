@@ -2,7 +2,7 @@
 @section('content')
     <div class="d-md-flex flex-md-row mb-md-3 row">
         <div class="col-md-6">
-            <a href="#">
+            <a href="{{ route('records.index') }}">
                 <div class="card mb-3 rounded-5">
                     <div class="row g-0">
                         <div class="col-md-4 d-flex justify-content-center align-items-center mt-4 mt-md-0">
@@ -19,12 +19,9 @@
                 </div>
             </a>
         </div>
-        {{-- <div class="col-md-2">
-
-        </div> --}}
 
         <div class="col-md-6">
-            <a href="#">
+            <a href="{{ route('municipios.index') }}">
                 <div class="card mb-3 rounded-5">
                     <div class="row g-0">
                         <div class="col-md-4 d-flex justify-content-center align-items-center mt-4 mt-md-0">
@@ -43,7 +40,7 @@
 
 
         <div class="col-md-6">
-            <a href="#">
+            <a href="{{ route('levels.index') }}">
                 <div class="card mb-3 rounded-5">
                     <div class="row g-0">
                         <div class="col-md-4 d-flex justify-content-center align-items-center mt-4 mt-md-0 mt-4 mt-md-0">
@@ -62,7 +59,7 @@
 
 
         <div class="col-md-6">
-            <a href="#">
+            <a href="{{ route('subjects.index') }}">
                 <div class="card mb-3 rounded-5">
                     <div class="row g-0">
                         <div class="col-md-4 d-flex justify-content-center align-items-center mt-4 mt-md-0">
