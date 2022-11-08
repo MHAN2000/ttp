@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Level;
+use App\Models\Subject;
+use App\Models\Municipio;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -32,14 +35,14 @@ class Record extends Model
 {
     
     static $rules = [
-		'nombre_realiza' => 'required',
-		'curp' => 'required',
-		'nombre' => 'required',
-		'paterno' => 'required',
-		'materno' => 'required',
-		'telefono' => 'required',
-		'celular' => 'required',
-		'correo' => 'required',
+		'nombre_realiza' => 'required|min:3',
+        'curp' => ['required', 'regex:/^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/'],
+		'nombre' => 'required|min:3',
+		'paterno' => 'required|min:3',
+		'materno' => 'required|min:3',
+		'telefono' => 'required|digits:10',
+		'celular' => 'required|digits:10',
+		'correo' => 'required|email',
 		'id_nivel' => 'required',
 		'id_municipio' => 'required',
 		'id_asunto' => 'required',
