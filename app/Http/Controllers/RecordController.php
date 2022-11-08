@@ -206,9 +206,9 @@ class RecordController extends Controller
     // public function getRecords() {
     //     $data = Record::with(['municipio', 'nivel', 'asunto']);
     // }
-    public function encontrarCURP($curp)
+    public function encontrarCURP($curpTurno)
     {
-        $data = Record::where('curp', $curp)->first();
+        $data = Record::where('curp', $curpTurno)->orWhere('turno', $curpTurno)->first();
         if ($data != null)
             return response()->json($data);
 
