@@ -57,6 +57,14 @@
                             {{ $record->correo }}
                         </div>
                         <div class="form-group">
+                            <strong>Estatus:</strong>
+                            {{ $record->estatus }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Turno:</strong>
+                            {{ $record->turno }}
+                        </div>
+                        <div class="form-group">
                             <strong>Id Nivel:</strong>
                             {{ $record->id_nivel }}
                         </div>

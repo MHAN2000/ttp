@@ -64,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $subjects->links() !!}
+                {{-- {!! $subjects->links() !!} --}}
             </div>
         </div>
     </div>
