@@ -42,6 +42,9 @@
                 <li>
                     <a href="#"><i class="fas fa-envelope-open-text"></i> Asuntos</a>
                 </li>
+                <li>
+                    <a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                </li>
             </ul>
 
         </nav>

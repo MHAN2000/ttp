@@ -44,8 +44,8 @@
 										<th>Telefono</th>
 										<th>Celular</th>
 										<th>Correo</th>
-                                        {{-- <th>Estatus</th>
-										<th>Turno</th> --}}
+                                        <th>Estatus</th>
+										<th>Turno</th>
 										<th>Nivel</th>
 										<th>Municipio</th>
 										<th>Asunto</th>

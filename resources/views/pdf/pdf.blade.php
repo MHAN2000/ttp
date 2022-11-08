@@ -35,7 +35,7 @@
                         <span
                             style="text-transform: uppercase; font-size: 1.5rem; color: #8dacb6">{{ $hoy }}</span>
                     </p>
-                    <p style="margin: 0 1rem; text-transform: uppercase; font-size: 1.5rem; color: #8dacb6">#MO1</p>
+                    <p style="margin: 0 1rem; text-transform: uppercase; font-size: 1.5rem; color: #8dacb6">{{$record->turno}}</p>
                     <p style="margin: 0 1rem; line-height: 1rem;">{{ $record->nombre_realiza }} | {{ $record->curp }}
                     </p>
                     <p style="margin: 0 1rem; line-height: 1rem;">{{ $record->telefono }}</p>

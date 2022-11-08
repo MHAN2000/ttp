@@ -56,6 +56,11 @@ class RecordController extends Controller
     public function store(Request $request)
     {
         request()->validate(Record::$rules);
+        $existe = Record::where('curp',$request->get('curp'))->get();
+        if ($existe!=null) {
+            return redirect()->route('records.index')
+            ->with('success', 'El registro ya existe.');
+        }
 
         $record = Record::create($request->all());
 
@@ -79,7 +84,10 @@ class RecordController extends Controller
     public function store_public(Request $request)
     {
         request()->validate(Record::$rules);
-
+        $existe = Record::where('curp',$request->get('curp'))->get();
+        if ($existe!=null) {
+            return response()->json('Ya existe-', 500);
+        }
         $record = Record::create($request->all());
 
         // Folio consecutivo por municipio

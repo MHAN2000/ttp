@@ -31,6 +31,12 @@ $(document).ready(function () {
                 data: "correo",
             },
             {
+                data: "estatus",
+            },
+            {
+                data: "turno",
+            },
+            {
                 data: "nivel.nombre",
             },
             {
