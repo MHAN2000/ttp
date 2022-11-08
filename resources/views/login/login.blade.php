@@ -35,7 +35,7 @@
             const req = await fetch(url, init);
             // Checar si la respuesta es un 200
             if (req.ok) {
-                window.location.href = route('inicio');
+                window.location.href = route('catalogos');
                 return;
             } else if (req.status == 429) {
                 // Obtener respuesta del servidor

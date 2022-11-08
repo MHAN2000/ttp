@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\AssignOp\Mul;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -47,6 +48,26 @@ class RecordController extends Controller
 
     }
 
+    public function dashboards() {
+        return view('dashboard.index');
+    }
+
+    public function resueltos() {
+        $pendientes = Record::where('estatus', 'Pendiente')->count();
+        $completos = Record::where('estatus', 'Resuelto')->count();
+    
+        return response()->json([$pendientes, $completos]);
+    }
+
+    public function ticketsMunicipios() {
+        $data = DB::table('records')->select('municipios.nombre', DB::raw('count(*) as total'))->join('municipios', 'records.id_municipio', '=', 'municipios.id')->groupBy('id_municipio')->get();
+
+        $labels = $data->pluck('nombre');
+        $total = $data->pluck('total');
+
+        return response()->json([$labels, $total]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -56,7 +77,8 @@ class RecordController extends Controller
     public function store(Request $request)
     {
         request()->validate(Record::$rules);
-        $existe = Record::where('curp',$request->get('curp'))->get();
+        $existe = Record::where('curp',$request->get('curp'))->first();
+
         if ($existe!=null) {
             return redirect()->route('records.index')
             ->with('success', 'El registro ya existe.');
@@ -84,7 +106,7 @@ class RecordController extends Controller
     public function store_public(Request $request)
     {
         request()->validate(Record::$rules);
-        $existe = Record::where('curp',$request->get('curp'))->get();
+        $existe = Record::where('curp',$request->get('curp'))->first();
         if ($existe!=null) {
             return response()->json('Ya existe-', 500);
         }
