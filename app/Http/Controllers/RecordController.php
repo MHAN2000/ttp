@@ -56,17 +56,17 @@ class RecordController extends Controller
         $record = Record::create($request->all());
 
         // Folio consecutivo por municipio
-        // $record->turno = Record::where('id_municipio', $record->id_municipio)->count();
-        // // Encontrar municipio por id municipio
-        // $municipio = Municipio::find($record->id_municipio)->nombre;
-        // // Obtener longitud del numero maximo encontrado por municipio
-        // $municipioLongitud = strlen(Record::where('id_municipio', $record->id_municipio)->count());
-        // // Empezar folio por el nombre del municipio, ademas agregar 13 posiciones relativas al nombre y llenarlas de 0
-        // $folio = str_pad($municipio, 13, '0', STR_PAD_RIGHT);
-        // // Formar el folio completo
-        // $folioCompleto = str_pad($folio, 13 + $municipioLongitud, Record::where('id_municipio', $record->id_municipio)->count(), STR_PAD_RIGHT);
-
-        // $record->save();
+        // Encontrar municipio por id municipio
+        $municipio = Municipio::find($record->id_municipio)->nombre;
+        // Obtener longitud del numero maximo encontrado por municipio
+        $municipioLongitud = strlen(Record::where('id_municipio', $record->id_municipio)->count());
+        // Empezar folio por el nombre del municipio, ademas agregar 13 posiciones relativas al nombre y llenarlas de 0
+        $folio = str_pad($municipio, 13, '0', STR_PAD_RIGHT);
+        // Formar el folio completo
+        $folioCompleto = str_pad($folio, 13 + $municipioLongitud, Record::where('id_municipio', $record->id_municipio)->count(), STR_PAD_RIGHT);
+        $record->turno = $folioCompleto;
+        
+        $record->save();
 
         return redirect()->route('records.index')
             ->with('success', 'Record created successfully.');
@@ -78,18 +78,18 @@ class RecordController extends Controller
 
         $record = Record::create($request->all());
 
-        // // Folio consecutivo por municipio
-        // $record->turno = Record::where('id_municipio', $record->id_municipio)->count();
-        // // Encontrar municipio por id municipio
-        // $municipio = Municipio::find($record->id_municipio)->nombre;
-        // // Obtener longitud del numero maximo encontrado por municipio
-        // $municipioLongitud = strlen(Record::where('id_municipio', $record->id_municipio)->count());
-        // // Empezar folio por el nombre del municipio, ademas agregar 13 posiciones relativas al nombre y llenarlas de 0
-        // $folio = str_pad($municipio, 13, '0', STR_PAD_RIGHT);
-        // // Formar el folio completo
-        // $folioCompleto = str_pad($folio, 13 + $municipioLongitud, Record::where('id_municipio', $record->id_municipio)->count(), STR_PAD_RIGHT);
+        // Folio consecutivo por municipio
+        // Encontrar municipio por id municipio
+        $municipio = Municipio::find($record->id_municipio)->nombre;
+        // Obtener longitud del numero maximo encontrado por municipio
+        $municipioLongitud = strlen(Record::where('id_municipio', $record->id_municipio)->count());
+        // Empezar folio por el nombre del municipio, ademas agregar 13 posiciones relativas al nombre y llenarlas de 0
+        $folio = str_pad($municipio, 13, '0', STR_PAD_RIGHT);
+        // Formar el folio completo
+        $folioCompleto = str_pad($folio, 13 + $municipioLongitud, Record::where('id_municipio', $record->id_municipio)->count(), STR_PAD_RIGHT);
+        $record->turno = $folioCompleto;
 
-        // $record->save();
+        $record->save();
 
 
         return response()->json($record, 200);
