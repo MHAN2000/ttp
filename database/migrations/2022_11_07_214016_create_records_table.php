@@ -14,7 +14,19 @@ class CreateRecordsTable extends Migration
     public function up()
     {
         Schema::create('records', function (Blueprint $table) {
-            $table->id();
+            $table->engine="InnoDB";
+            $table->bigIncrements('id');
+            $table->string('nombre_realiza');
+            $table->string('curp');
+            $table->string('nombre');
+            $table->string('paterno');
+            $table->string('materno');
+            $table->string('telefono');
+            $table->string('celular');
+            $table->string('correo');
+            $table->foreignId('id_nivel')->references('id')->on('levels');
+            $table->foreignId('id_municipio')->references('id')->on('municipios');
+            $table->foreignId('id_asunto')->references('id')->on('subjects');
             $table->timestamps();
         });
     }
