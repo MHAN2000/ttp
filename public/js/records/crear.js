@@ -72,8 +72,8 @@ const buscarModal = () => {
     document.getElementById('modalBody').innerHTML = `
     <div class="row">
         <div class="col-12">
-            <label>CURP a buscar:</label>
-            <input class="form-control" id="curpModal" name="curp">
+            <label>CURP o Turno a buscar:</label>
+            <input class="form-control" id="curpTurnoModal" name="curpTurno">
         </div>
     </div>
     <div class="row mb-3">
@@ -85,7 +85,7 @@ const buscarModal = () => {
 }
 
 const completarFormulario = async () => {
-    const curpModalElemento = document.getElementById('curpModal').value;
+    const curpModalElemento = document.getElementById('curpTurnoModal').value;
     const url = route('encontrarCURP', curpModalElemento);
     const init = {
         method: 'GET',

@@ -9,41 +9,26 @@
             </div>
 
             <ul class="list-unstyled components">
-                {{-- <p>Dummy Heading</p> --}}
-                {{-- <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li> --}}
-                <li class="active">
-                    <a href="#"><i class="fas fa-home"></i> Home</a>
+                <li>
+                    <a href="{{ route('catalogos') }}"><i class="fas fa-home"></i> Home</a>
                 </li>
                 <li>
-                    <a href="#"> <i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="{{ route('dashboard') }}"> <i class="fas fa-chart-line"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-file-signature"></i> Registro</a>
+                    <a href="{{ route('records.index') }}"><i class="fas fa-file-signature"></i> Registro</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-search-location"></i> Municipios</a>
+                    <a href="{{ route('municipios.index') }}"><i class="fas fa-search-location"></i> Municipios</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-level-up-alt"></i> Niveles</a>
+                    <a href="{{ route('levels.index') }}"><i class="fas fa-level-up-alt"></i> Niveles</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-envelope-open-text"></i> Asuntos</a>
+                    <a href="{{ route('subjects.index') }}"><i class="fas fa-envelope-open-text"></i> Asuntos</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                    <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                 </li>
             </ul>
 
@@ -111,18 +96,18 @@
         </div>
     </div>
 @endsection
-    @push('scripts')
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#sidebar").mCustomScrollbar({
-                    theme: "minimal"
-                });
-
-                $('#sidebarCollapse').on('click', function() {
-                    $('#sidebar, #content').toggleClass('active');
-                    $('.collapse.in').toggleClass('in');
-                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                });
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
             });
-        </script>
-    @endpush
+
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+@endpush

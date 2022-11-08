@@ -9,6 +9,8 @@ use App\Models\Level;
 use App\Models\Municipio;
 use App\Models\Record;
 use App\Models\Subject;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,46 +28,58 @@ Route::get('/', function () {
     $municipios = Municipio::all();
     $asuntos = Subject::all();
     $niveles = Level::all();
-    
+
     return view('record.public-record', compact('municipios', 'asuntos', 'niveles'));
 })->name('inicio');
 
 Route::get('/inicia_sesion', function () {
     return view('login.login');
-});
-
-Route::get('/catalogo', function () {
-    return view('catalogo.index');
-});
-
+})->name('login');
 
 Route::post('/usuario_sesion',  [UserController::class, 'login'])->name('usuario_sesion');
-Route::post('/crear_registro_publico',  [RecordController::class, 'store_public'])->name('crear_registro_publico');
 
-Route::resource('levels', LevelController::class);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/catalogo', function () {
+        return view('catalogo.index');
+    })->name('catalogos');
 
-Route::resource('records', RecordController::class);
+    Route::post('/crear_registro_publico',  [RecordController::class, 'store_public'])->name('crear_registro_publico');
 
-Route::get('tabla_records', [RecordController::class, 'getRecords'])->name('getRecords');
+    Route::resource('levels', LevelController::class);
 
-Route::put('status_registro/{id}', [RecordController::class, 'changeStatus'])->name('changeStatus');
+    Route::resource('records', RecordController::class);
 
+    Route::get('tabla_records', [RecordController::class, 'getRecords'])->name('getRecords');
 
-// Ruta directo de PDF para pruebas jsjs
-Route::get('record_pdf/{id}', [RecordController::class, 'exportPDF'])->name('export_pdf');
+    Route::get('resueltos', [RecordController::class, 'resueltos'])->name('resueltos');
 
-Route::get('encontrar_registro_curp/{curp}', [RecordController::class, 'encontrarCURP'])->name('encontrarCURP');
+    Route::get('tickets_ciudades', [RecordController::class, 'ticketsMunicipios'])->name('tickets_ciudades');
 
-Route::get('/editar_registro_publico/{curp}', [RecordController::class, 'editPublico'])->name('editPublico');
+    Route::put('status_registro/{id}', [RecordController::class, 'changeStatus'])->name('changeStatus');
 
-Route::put('actualizar_registro_publico/{id}', [RecordController::class, 'updatePublic'])->name('updatePublic');
+    Route::get('dashboard', [RecordController::class, 'dashboards'])->name('dashboard');
 
-Route::get('tabla_levels', [LevelController::class, 'getLevels'])->name('getLevels');
+    // Ruta directo de PDF para pruebas jsjs
+    Route::get('record_pdf/{id}', [RecordController::class, 'exportPDF'])->name('export_pdf');
 
-Route::resource('subjects', SubjectController::class);
+    Route::get('encontrar_registro_curp/{curp}', [RecordController::class, 'encontrarCURP'])->name('encontrarCURP');
 
-Route::get('tabla_subjects', [SubjectController::class, 'getSubjects'])->name('getSubjects');
+    Route::get('/editar_registro_publico/{curp}', [RecordController::class, 'editPublico'])->name('editPublico');
 
-Route::resource('municipios', MunicipioController::class);
+    Route::put('actualizar_registro_publico/{id}', [RecordController::class, 'updatePublic'])->name('updatePublic');
 
-Route::get('tabla_municipios', [MunicipioController::class, 'getMunicipios'])->name('getMunicipios');
+    Route::get('tabla_levels', [LevelController::class, 'getLevels'])->name('getLevels');
+
+    Route::resource('subjects', SubjectController::class);
+
+    Route::get('tabla_subjects', [SubjectController::class, 'getSubjects'])->name('getSubjects');
+
+    Route::resource('municipios', MunicipioController::class);
+
+    Route::get('tabla_municipios', [MunicipioController::class, 'getMunicipios'])->name('getMunicipios');
+
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect('inicia_sesion');
+    })->name('logout');
+});
