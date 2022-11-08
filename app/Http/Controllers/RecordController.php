@@ -65,8 +65,6 @@ class RecordController extends Controller
         $labels = $data->pluck('nombre');
         $total = $data->pluck('total');
 
-        dd([$labels,$total]);
-
         return response()->json([$labels, $total]);
     }
 
