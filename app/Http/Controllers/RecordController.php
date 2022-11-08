@@ -65,6 +65,8 @@ class RecordController extends Controller
         $labels = $data->pluck('nombre');
         $total = $data->pluck('total');
 
+        dd([$labels,$total]);
+
         return response()->json([$labels, $total]);
     }
 
@@ -108,7 +110,7 @@ class RecordController extends Controller
         request()->validate(Record::$rules);
         $existe = Record::where('curp',$request->get('curp'))->first();
         if ($existe!=null) {
-            return response()->json('Ya existe-', 500);
+            return response()->json('Ya existe.', 423);
         }
         $record = Record::create($request->all());
 

@@ -15,6 +15,7 @@ const generar_turno = async () => {
     const req = await fetch(url, init);
     if (req.ok) {
         const { id } = await req.json();
+        form.reset();
         window.open(route('export_pdf', id), '_blank').focus();
         Swal.fire({
             title: "Good job!",
@@ -23,15 +24,26 @@ const generar_turno = async () => {
         });
         dt_records.ajax.reload();
         // Generar pdf
-    } else {
+    } else if (req.status == 423) {
+         Swal.fire({
+            title: "Error!",
+            text: "La CURP ya existe.",
+            icon: "error"
+        });
+    }else if (req.status == 422) {
+        const err = await req.json();
+        console.log(err);
         Swal.fire({
             title: "Error!",
-            text: "No se pudo crear el registro.",
+            text: "El formato de algunos campos es incorrecto. " + printErrors(Object.values(err.errors)),
             icon: "error"
         });
     }
 }
 
+const printErrors = obj => {
+    return obj.map(e => `${e[0]}\n`);
+}
 const editar_turno = async (id) => {
     const url = route('updatePublic', id);
     const form = document.getElementById('formulario');

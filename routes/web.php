@@ -37,13 +37,19 @@ Route::get('/inicia_sesion', function () {
 })->name('login');
 
 Route::post('/usuario_sesion',  [UserController::class, 'login'])->name('usuario_sesion');
+Route::post('/crear_registro_publico',  [RecordController::class, 'store_public'])->name('crear_registro_publico');
+Route::get('encontrar_registro_curp/{curp}', [RecordController::class, 'encontrarCURP'])->name('encontrarCURP');
 
+Route::get('/editar_registro_publico/{curp}', [RecordController::class, 'editPublico'])->name('editPublico');
+
+Route::put('actualizar_registro_publico/{id}', [RecordController::class, 'updatePublic'])->name('updatePublic');
+// Ruta directo de PDF para pruebas jsjs
+    Route::get('record_pdf/{id}', [RecordController::class, 'exportPDF'])->name('export_pdf');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/catalogo', function () {
         return view('catalogo.index');
     })->name('catalogos');
 
-    Route::post('/crear_registro_publico',  [RecordController::class, 'store_public'])->name('crear_registro_publico');
 
     Route::resource('levels', LevelController::class);
 
@@ -58,15 +64,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('status_registro/{id}', [RecordController::class, 'changeStatus'])->name('changeStatus');
 
     Route::get('dashboard', [RecordController::class, 'dashboards'])->name('dashboard');
-
-    // Ruta directo de PDF para pruebas jsjs
-    Route::get('record_pdf/{id}', [RecordController::class, 'exportPDF'])->name('export_pdf');
-
-    Route::get('encontrar_registro_curp/{curp}', [RecordController::class, 'encontrarCURP'])->name('encontrarCURP');
-
-    Route::get('/editar_registro_publico/{curp}', [RecordController::class, 'editPublico'])->name('editPublico');
-
-    Route::put('actualizar_registro_publico/{id}', [RecordController::class, 'updatePublic'])->name('updatePublic');
 
     Route::get('tabla_levels', [LevelController::class, 'getLevels'])->name('getLevels');
 

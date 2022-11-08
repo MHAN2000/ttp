@@ -1,5 +1,5 @@
-@extends('sidebar')
-@section('content-sidebar')
+@extends('layouts.app')
+@section('content')
     <div class="d-md-flex flex-md-row mb-md-3 row">
         <div class="col-md-6">
             <a href="#">
