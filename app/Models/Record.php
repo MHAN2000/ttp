@@ -6,6 +6,7 @@ use App\Models\Level;
 use App\Models\Subject;
 use App\Models\Municipio;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Record
@@ -33,6 +34,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Record extends Model
 {
+
+    use SoftDeletes;
     
     static $rules = [
 		'nombre_realiza' => 'required|min:3',

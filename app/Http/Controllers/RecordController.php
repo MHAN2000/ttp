@@ -90,11 +90,11 @@ class RecordController extends Controller
         // Encontrar municipio por id municipio
         $municipio = Municipio::find($record->id_municipio)->nombre;
         // Obtener longitud del numero maximo encontrado por municipio
-        $municipioLongitud = strlen(Record::where('id_municipio', $record->id_municipio)->count());
+        $municipioLongitud = strlen(Record::where('id_municipio', $record->id_municipio)->withTrashed()->count());
         // Empezar folio por el nombre del municipio, ademas agregar 13 posiciones relativas al nombre y llenarlas de 0
         $folio = str_pad($municipio, 13, '0', STR_PAD_RIGHT);
         // Formar el folio completo
-        $folioCompleto = str_pad($folio, 13 + $municipioLongitud, Record::where('id_municipio', $record->id_municipio)->count(), STR_PAD_RIGHT);
+        $folioCompleto = str_pad($folio, 13 + $municipioLongitud, Record::where('id_municipio', $record->id_municipio)->withTrashed()->count(), STR_PAD_RIGHT);
         $record->turno = $folioCompleto;
         
         $record->save();
@@ -116,11 +116,11 @@ class RecordController extends Controller
         // Encontrar municipio por id municipio
         $municipio = Municipio::find($record->id_municipio)->nombre;
         // Obtener longitud del numero maximo encontrado por municipio
-        $municipioLongitud = strlen(Record::where('id_municipio', $record->id_municipio)->count());
+        $municipioLongitud = strlen(Record::where('id_municipio', $record->id_municipio)->withTrashed()->count());
         // Empezar folio por el nombre del municipio, ademas agregar 13 posiciones relativas al nombre y llenarlas de 0
         $folio = str_pad($municipio, 13, '0', STR_PAD_RIGHT);
         // Formar el folio completo
-        $folioCompleto = str_pad($folio, 13 + $municipioLongitud, Record::where('id_municipio', $record->id_municipio)->count(), STR_PAD_RIGHT);
+        $folioCompleto = str_pad($folio, 13 + $municipioLongitud, Record::where('id_municipio', $record->id_municipio)->withTrashed()->count(), STR_PAD_RIGHT);
         $record->turno = $folioCompleto;
 
         $record->save();

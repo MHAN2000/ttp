@@ -29,6 +29,7 @@ class CreateRecordsTable extends Migration
             $table->foreignId('id_nivel')->references('id')->on('levels');
             $table->foreignId('id_municipio')->references('id')->on('municipios');
             $table->foreignId('id_asunto')->references('id')->on('subjects');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
